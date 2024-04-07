@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "906315983100",
+    "project_id": "phenom-c0a0c",
+    "storage_bucket": "phenom-c0a0c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906315983100:android:5954b7c47befcf8a86cf79",
+        "android_client_info": {
+          "package_name": "com.example.egg_incubator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa9aF2ibQ6p4PWKOgKvn9qPik4vlN5hMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
