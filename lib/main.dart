@@ -45,8 +45,8 @@ class MyHomePage extends StatelessWidget {
             );
           }
           var data = snapshot.data?.data() as Map<String, dynamic>;
-          if(data['message']=='') {
-            data['message']='DHT sensor is working fine.';
+          if (data['message'] == '') {
+            data['message'] = 'DHT sensor is working fine.';
           }
           DateTime time = (data['time'] as Timestamp).toDate();
           String formattedTime = DateFormat('MMMM d, h:mm:ss a').format(time);
@@ -54,10 +54,19 @@ class MyHomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('Humidity: ${data['humidity']}%'),
-                Text('Temperature: ${data['temperature']}°C'),
-                Text('Time of retrieval: $formattedTime'),
-                Text('Message: ${data['message']}'),
+                Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(children: <Widget>[
+                      Text('Humidity: ${data['humidity'].toStringAsFixed(4)}%'),
+                      Text(
+                          'Temperature: ${data['temperature'].toStringAsFixed(4)}°C'),
+                      Text('Time of retrieval: $formattedTime'),
+                      Text('Message: ${data['message']}'),
+                    ])),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Text('click to candle eggs'),
+                ),
               ],
             ),
           );
