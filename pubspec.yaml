@@ -41,6 +41,8 @@ dependencies:
   cloud_firestore: any
   firebase_database: ^10.5.2
   firebase_storage: ^11.7.2
+  fl_chart: ^0.67.0
+  ionicons: ^0.2.2
 dev_dependencies:
   flutter_test:
     sdk: flutter

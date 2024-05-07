@@ -6,6 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'line_chart.dart';
+import 'package:ionicons/ionicons.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +28,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -89,6 +92,16 @@ class MyHomePage extends StatelessWidget {
                   }
                 },
               ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                  constraints: const BoxConstraints(
+                    maxWidth: 400, // Specify the maximum width
+                    maxHeight: 300, // Specify the maximum height
+                  ),
+                  child: const LineChartSample(), // Your child widget
+                ),
+              ),
               StreamBuilder<DocumentSnapshot>(
                 stream: db.collection('data').doc('sensor').snapshots(),
                 builder: (context, snapshot) {
@@ -112,10 +125,28 @@ class MyHomePage extends StatelessWidget {
                       Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Column(children: <Widget>[
-                            Text(
-                                'Humidity: ${data['humidity'].toStringAsFixed(4)}%'),
-                            Text(
-                                'Temperature: ${data['temperature'].toStringAsFixed(4)}°C'),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(Ionicons.rainy_outline),
+                                const SizedBox(
+                                    width:
+                                        8), // Add some space between the icon and text
+                                Text(
+                                    'Humidity: ${data['humidity'].toStringAsFixed(4)}%'),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Icon(Ionicons.thermometer_outline),
+                                const SizedBox(
+                                    width:
+                                        8), // Add some space between the icon and text
+                                Text(
+                                    'Temperature: ${data['temperature'].toStringAsFixed(4)}°C'),
+                              ],
+                            ),
                             Text('Time of retrieval: $formattedTime'),
                             Text('Message: ${data['message']}'),
                           ])),
